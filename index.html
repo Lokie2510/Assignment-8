@@ -2,211 +2,159 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> 
-    <title>Student Grade Calcularor</title>
+    <title>Form Validation</title>
     <style>
-        /*@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');*/
-*{
-    margin: 0;
-    padding: 3px;
-    box-sizing: border-box;
-    text-transform: capitalize;
-    
-}
-body{
-    display: grid;
-    place-content: center;
-    min-height: 100vh;
-}
-.container{
-    background-color: #15c7df;
-    width: 750px;
-    height: 450px;
-    box-shadow: 10px 10px 10px 10px #000;
-    border-radius: 30px;
-}
-.left-box{
-    position: absolute;
-    width: 350px;
-    height: 443px;
-    background-color: #ecf1f1;
-    font-family: "Roboto Slab", serif;
-    border-radius: 30px;
-}
-.left-box h1{
-    margin-top: 20px;
-    text-align: center;
-    color: rgb(224, 134, 15);
-    text-decoration: underline;
-}
-.p-g-t{
-    display: grid;
-    min-height: 30vh;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 15px 0px;
-}
-.p-g-t h3{
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-top: 5px;
-}
-.content.right-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 62vw;
-    max-height: 50vh;
-    margin-top: 50px;
-    float: right;
-}
-.right-box input{
-    margin: 5px 0px;
-    width: 300px;
-    height: 50%;
-    margin-left: 350px;
-    padding: 10px;
-    outline: none;
-    font-size: 0.9rem;
-    border: 0;
-    border-radius: 10px;
-    
-}
-.right-box button{
-    margin-left: 450px;
-    border-radius: 20px;
-    cursor: pointer;
-    padding: 5px 10px;
-    background-color: #cfcc13d8;
-    font-weight: 900;
-    border: none;
-    margin-top: 10px;
-}
-.result{
-    position: absolute;
-    bottom: 120px;
-    width: 350px;
-    height: 50px;
-    background-color: aqua;
-    border-radius: 40px;
-}
-.result h2{
-    text-align: center;
-    line-height: 50px;
-    font-size: 1.9rem;
-    color: black;
-    font-weight: 900;
-    letter-spacing: 5px;
-    font-family: 'Times New Roman', Times, serif;
-}
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            background-color: #6be9d8;
+            margin: 0;
 
-/*.result1{
-    position: absolute;
-    bottom: 120px;
-    width: 350px;
-    height: 50px;
-    background-color: rgb(231, 152, 5);
-    border-radius: 40px;
-    
-}
-.result1 h2{
-    text-align: center;
-    line-height: 50px;
-    font-size: 1.9rem;
-    color: black;
-    font-weight: 900;
-    letter-spacing: 5px;
-    font-family: 'Times New Roman', Times, serif;
-}*/
+            
+        }
+        .form-container {
+            background-color: #c1eb7d;
+            padding: 20px;
+            border-radius: 50px 5px;
+            box-shadow: 15px 15px 25px rgba(207, 15, 15, 0.1);
+            width: 300px;
+
+        }
+        h2 {
+            text-align: center;
+            color: #23a7e4;
+            font-family: Georgia, 'Times New Roman', Times, sans-serif;
+            font-weight: bolder;
+            font-size:xx-large;
+            text-shadow: 5px 5px 10px #e49023;
+            
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid  #9cdf32;
+            border-radius: 4px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: rgb(248, 246, 246);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: large;
+            font-weight: bolder;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .alert {
+            color: red;
+            font-size: 12px;
+            margin-top: -5px;
+        }
     </style>
-
-
 </head>
 <body>
-    <div class="container">
-        <div class="left-box">
-            <h1>RESULT</h1>
-            <div class="p-g-t">
-                <h3>Name = <span class="stuname"></span></h3>
-                <h3>ID = <span class="id"></span></h3>
-                <h3>% = <span class="per"></span></h3>
-                <h3>Grade = <span class="gra"></span></h3>
-                <h3>Total = <span class="tot"></span></h3>
-            </div>
-        </div>
-        <div class="content">
-            <div class="right-box">
-                <input text="number" id="s" placeholder="Student Name" required/>
-                <input text="number" id="i" placeholder="Student ID number" required/>
-                <input text="number" id="la" placeholder="Language" required/>
-                <input text="number" id="en" placeholder="English" required/>
-                <input text="number" id="mt" placeholder="Maths" required/>
-                <input text="number" id="sci" placeholder="Science" required/>
-                <input text="number" id="soc" placeholder="Social Science" required/>
-                <button type="button" class="btn btn-primary" onclick="showresult()">Show Result</button>
-            </div>
-        </div>
-        <div class="result">
-        <h2></h2>
+    <div class="form-container">
+        <h2>CONTACT FORM</h2>
+        <form id="myForm">
+            <input type="text" id="firstName" placeholder="First Name" required>
+            <div id="firstName-error" class="alert"></div>
+            <input type="text" id="lastName" placeholder="Last Name" required>
+            <div id="lastName-error" class="alert"></div>
+            <input type="text" id="username" placeholder="Username" required>
+            <div id="username-error" class="alert"></div>
+            <input type="email" id="email" placeholder="Email" required>
+            <div id="email-error" class="alert"></div>
+            <input type="password" id="password" placeholder="Password" required>
+            <div id="password-error" class="alert"></div>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <div id="phone-error" class="alert"></div>
+            <input type="date" id="dob" placeholder="Date of Birth" required>
+            <div id="dob-error" class="alert"></div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
-</div>
-<div class="result1">
-<h2></h2>
-</div>
-</div>
-<script>
-        function showresult(){
-    let s = document.querySelector("#s").value;
-    let i = document.querySelector("#i").value;
-    let la = document.querySelector("#la").value; 
-    let en = document.querySelector("#en").value;
-    let mt = document.querySelector("#mt").value;
-    let sci = document.querySelector("#sci").value;
-    let soc = document.querySelector("#soc").value;
+    <script>
+        const form = document.getElementById("myForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const fName = document.getElementById("firstName").value;
+            const lName = document.getElementById("lastName").value;
+            const user = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const pass = document.getElementById("password").value;
+            const phone = document.getElementById("phone").value;
+            const dob = document.getElementById("dob").value;
 
-    let tot=parseFloat(la)+parseFloat(en)+parseFloat(mt)+parseFloat(sci)+parseFloat(soc);
-    let per=(tot*100)/500;
-    let stuname=parseFloat(s);
-    let id=parseFloat(i);
-   
-    
+            let isValid = true;
+            document.getElementById("firstName-error").textContent = "";
+            document.getElementById("lastName-error").textContent = "";
+            document.getElementById("username-error").textContent = "";
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+            document.getElementById("phone-error").textContent = "";
+            document.getElementById("dob-error").textContent = "";
 
-    if (per>=90){
-        document.querySelector(".gra").innerHTML= "A+";
-    }else if (per>=80){
-        document.querySelector(".gra").innerHTML= "A";
-    }else if (per>=70){
-        document.querySelector(".gra").innerHTML= "B+";
-    }else if (per>=60){
-        document.querySelector(".gra").innerHTML= "B";
-    }else if (per>=50){
-        document.querySelector(".gra").innerHTML= "C";
-    }else if (per>=40){
-        document.querySelector(".gra").innerHTML= "D";
-    }else if (per>=30){
-        document.querySelector(".gra").innerHTML= "E";
-    }else{
-        document.querySelector(".gra").innerHTML= "you are fail";
-    }
-    
-
-    document.querySelector(".tot").innerHTML= tot;
-    document.querySelector(".per").innerHTML= per+"%";
-    //document.querySelector("stuname").innerHTML= stuname;
-    //const stuname=document.getElementById("#s");
-    document.querySelector(".stuname").innerHTML= s;
-    document.querySelector(".id").innerHTML= i;
-
-
-    if (per > 30){
-        document.querySelector(".result h2").innerHTML ="YOU ARE PASS";
-    }else{
-        document.querySelector(".result h2").innerHTML ="YOU ARE FAIL";
-    }
-
-}
-     </script>
+            const name = /^[a-zA-Z]{1,30}$/;
+            if (!name.test(fName)) {
+                document.getElementById("firstName-error").textContent = 
+                    "First name must be 1-30 letters.";
+                isValid = false;
+            }
+            if (!name.test(lName)) {
+                document.getElementById("lastName-error").textContent = 
+                    "Last name must be 1-30 letters.";
+                isValid = false;
+            }
+            const userName = /^[a-zA-Z0-9_]{3,15}$/;
+            if (!userName.test(user)) {
+                document.getElementById("username-error").textContent = 
+                    "Username must be 3-15 chars (letters, numbers, underscores).";
+                isValid = false;
+            }
+            const emailid = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
+            if (!emailid.test(email)) {
+                document.getElementById("email-error").textContent = 
+                    "Invalid email address.";
+                isValid = false;
+            }
+            const password = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+            if (!password.test(pass)) {
+                document.getElementById("password-error").textContent = 
+                    "Password must have 8+ chars, 1 uppercase, 1 number, 1 special char.";
+                isValid = false;
+            }
+            const phoneno = /^[7-9][0-9]{9}$/;
+            if (!phoneno.test(phone)) {
+                document.getElementById("phone-error").textContent = 
+                    "Phone must be 10 digits, starting with 7-9.";
+                isValid = false;
+            }
+            const today = new Date();
+            const bDate = new Date(dob);
+            const age = today.getFullYear() - bDate.getFullYear();
+            const month = today.getMonth() - bDate.getMonth();
+            if (age < 18 || (age === 18 && month < 0)) {
+                document.getElementById("dob-error").textContent = 
+                    "You must be at least 18 years old.";
+                isValid = false;
+            }
+            if (isValid) {
+                alert("Form submitted successfully!");
+            }
+        });
+    </script>
 </body>
 </html>
